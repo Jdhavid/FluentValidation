@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ModelLayer;
+using ModelLayer.Interfaces;
 
 namespace ApiLayer
 {
@@ -28,6 +29,7 @@ namespace ApiLayer
             services.AddControllers();
             services.AddTransient<IPersonService, PersonService>();
             services.AddTransient<IPersonData, PersonData>();
+            services.AddTransient<IPersonResponse, PersonResponse>();
             services.AddTransient<IValidator<PersonModel>, PersonModelValidator>();
             services.AddTransient<IValidator<PersonRequest>, PersonRequestValidator>();
         }

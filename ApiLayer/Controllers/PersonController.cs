@@ -23,7 +23,7 @@ namespace ApiLayer.Controllers
 
         [HttpPost]
         [Route("GetListPerson")]
-        public ActionResult<IEnumerable<string>> GetList([FromBody] PersonRequest request)
+        public ActionResult<PersonResponse> GetList([FromBody] PersonRequest request)
         {
             return Ok(personSevice.GetPersons(request));
         }

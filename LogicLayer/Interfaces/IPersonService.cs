@@ -1,9 +1,10 @@
 ﻿using ModelLayer;
+using ModelLayer.Interfaces;
 
 namespace LogicLayer.Interfaces
 {
     public interface IPersonService
     {
-        PersonResponse GetPersons(PersonRequest request);
+        IPersonResponse GetPersons(PersonRequest request);
     }
 }

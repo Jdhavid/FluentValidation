@@ -3,6 +3,7 @@ using FluentValidation;
 using LogicLayer.Interfaces;
 using LogicLayer.Validators;
 using ModelLayer;
+using ModelLayer.Interfaces;
 using System.Collections.Generic;
 
 namespace LogicLayer
@@ -13,21 +14,22 @@ namespace LogicLayer
         private readonly IValidator<PersonModel> personModelValidator;
         private readonly IValidator<PersonRequest> personRequestValidator;
         private readonly IPersonData personData;
+        private readonly IPersonResponse personResponse;
 
         public PersonService(IValidator<PersonModel> personModelValidator,
                              IValidator<PersonRequest> personRequestValidator,
-                             IPersonData personData)
+                             IPersonData personData,
+                             IPersonResponse personaResponse)
         {
             this.personModelValidator = personModelValidator;
             this.personRequestValidator = personRequestValidator;
             this.personData = personData;
+            this.personResponse = personaResponse;
         }
 
 
-        public PersonResponse GetPersons(PersonRequest request)
-        {
-            PersonResponse personResponse = new PersonResponse();
-
+        public IPersonResponse GetPersons(PersonRequest request)
+        {            
             var validationResult = this.personRequestValidator.Validate(request);
 
             if (!validationResult.IsValid)
@@ -38,7 +40,6 @@ namespace LogicLayer
                 return personResponse;
             }
             personResponse.person = personData.GetList();
-
             return personResponse;
         }
 
