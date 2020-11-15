@@ -14,8 +14,7 @@ namespace LogicLayer
         private readonly IValidator<PersonRequest> personRequestValidator;
         private readonly IPersonData personData;
 
-        public PersonService(
-                             IValidator<PersonModel> personModelValidator,
+        public PersonService(IValidator<PersonModel> personModelValidator,
                              IValidator<PersonRequest> personRequestValidator,
                              IPersonData personData)
         {
